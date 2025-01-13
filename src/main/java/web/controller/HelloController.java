@@ -13,8 +13,6 @@ import java.util.List;
 
 @Controller
 public class HelloController {
-	private CarServiceImpl carService = new CarServiceImpl();
-
 	@GetMapping(value = "/")
 	public String printWelcome(ModelMap model) {
 		List<String> messages = new ArrayList<>();
@@ -24,12 +22,4 @@ public class HelloController {
 		model.addAttribute("messages", messages);
 		return "index";
 	}
-
-	@GetMapping("/cars")
-	public String getCars(@RequestParam(value = "count", defaultValue = "5") int count, Model model) {
-		List<Car> cars = carService.getCars(count);
-		model.addAttribute("cars", cars);
-		return "cars";
-	}
-
 }
